@@ -28,7 +28,7 @@ namespace WpfApp_TextEdit
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string fontName = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+            string fontName = ((sender as ComboBox).SelectedItem as string);
             if (textBox != null)
             {
                 textBox.FontFamily = new FontFamily(fontName);
@@ -39,8 +39,8 @@ namespace WpfApp_TextEdit
         {
             if (textBox != null)
             {
-                string fontSize = ((sender as ComboBox).SelectedItem as TextBlock).Text;
-                textBox.FontSize = Convert.ToDouble(fontSize);
+                double fontSize = Convert.ToDouble((sender as ComboBox).SelectedItem);
+                textBox.FontSize = fontSize;
             }
         }
 
