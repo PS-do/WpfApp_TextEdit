@@ -25,6 +25,10 @@ namespace WpfApp_TextEdit
         public MainWindow()
         {
             InitializeComponent();
+            this.Top = Properties.Settings.Default.Position.Top;
+            this.Left = Properties.Settings.Default.Position.Left;
+            this.Height = Properties.Settings.Default.Position.Height;
+            this.Width = Properties.Settings.Default.Position.Width;
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -128,6 +132,8 @@ namespace WpfApp_TextEdit
 
         private void Exit()
         {
+            Properties.Settings.Default.Position = this.RestoreBounds;
+            Properties.Settings.Default.Save();
             Application.Current.Shutdown();
         }
 
@@ -149,6 +155,11 @@ namespace WpfApp_TextEdit
         private void ClicInfo(object sender, ExecutedRoutedEventArgs e)
         {
             Info();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Exit();  
         }
     }
 }
