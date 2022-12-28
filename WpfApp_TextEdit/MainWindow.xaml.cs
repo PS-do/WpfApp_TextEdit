@@ -161,5 +161,14 @@ namespace WpfApp_TextEdit
         {
             Exit();  
         }
+
+        private void themes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Uri uriTheme = new Uri(themes.SelectedIndex==0? "LightTeme.xaml": "DarkTeme.xaml",UriKind.Relative);
+            ResourceDictionary themeDict = Application.LoadComponent(uriTheme) as ResourceDictionary;
+            Application.Current.Resources.MergedDictionaries.Add(themeDict);
+
+        }
     }
 }

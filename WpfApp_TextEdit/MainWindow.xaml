@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_TextEdit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
+        Title="MainWindow" Height="450" Width="830" MinHeight="250" MinWidth="830" Closing="Window_Closing">
     <Window.CommandBindings>
         <CommandBinding Command="Open" Executed="ClicOpen"/>
         <CommandBinding Command="Save" Executed="ClicSave"/>
@@ -48,14 +48,16 @@
                         SelectedIndex="0" 
                         Width="200" 
                         SelectionChanged="ComboBox_SelectionChanged"
-                        ItemsSource="{StaticResource fonts}"/>
+                        ItemsSource="{StaticResource fonts}"
+                        Style="{DynamicResource ComboBoxStyle}"/>
                     <ComboBox 
                         Margin="5"                        
                         Padding="5"
                         SelectedIndex="2"
                         Width="40"
                         SelectionChanged="ComboBox_SelectionChanged_1"
-                        ItemsSource="{StaticResource sizes}"/>
+                        ItemsSource="{StaticResource sizes}"
+                        Style="{DynamicResource ComboBoxStyle}"/>
                 </ToolBar>
 
                 <ToolBar Margin="5" Padding="5">
@@ -74,6 +76,30 @@
                     <StackPanel VerticalAlignment="Center">
                         <RadioButton Content="Чёрный" IsChecked="True" Checked="RadioButtonBlack_Checked"/>
                         <RadioButton Content="Красный"  Checked="RadioButtonRed_Checked" Foreground="Red" />
+                    </StackPanel>
+                </ToolBar>
+                <ToolBar Margin="5" Padding="5" >                    
+                    <StackPanel>
+                        <Label 
+                            Content="Тема:" 
+                            Width="100" 
+                            Height="Auto" 
+                            VerticalAlignment="Top" 
+                            HorizontalAlignment="Left"
+                            Padding="3"
+                            Margin="3"/>
+                        <ComboBox 
+                            Name="themes" 
+                            VerticalAlignment="Bottom" 
+                            Width="120" 
+                            SelectedIndex="0"
+                            Margin="3"
+                            Padding="3" 
+                            SelectionChanged="themes_SelectionChanged"
+                            Style="{DynamicResource ComboBoxStyle}">
+                            <TextBlock Text="Светлая тема"/>
+                            <TextBlock Text="Тёмная тема"/>
+                        </ComboBox>
                     </StackPanel>
                 </ToolBar>
             </ToolBarTray>
